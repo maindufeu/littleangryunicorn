@@ -12,7 +12,7 @@ jobs:
     steps:
       # Paso 1: Configuración de SSH
       - name: Configurar clave SSH
-        run: echo "${{ secrets.KEY }}" > ssh_key.pem && chmod 600 ssh_key.pem
+        run: echo "${{ secrets.KEY }}" > ssh_key.pem && chmod 400 ssh_key.pem
       # Paso 2: listar
       - name: Configurar clave SSH
         run: ls
