@@ -21,7 +21,7 @@ jobs:
       - name: Build & Deploy
       
         run: |
-          sudo ssh -i ssh_key.pem ubuntu@ec2-44-203-100-59.compute-1.amazonaws.com
+          sudo ssh -i ~/ssh_key.pem ubuntu@ec2-44-203-100-59.compute-1.amazonaws.com
 
               # Now we have got the access of EC2 and we will start the deploy .
               cd /home/ubuntu/littleangryunicorn && git pull
