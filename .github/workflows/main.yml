@@ -12,13 +12,16 @@ jobs:
     steps:
       # Paso 1: Configuración de SSH
       - name: Configurar clave SSH
-        run: echo "${{ secrets.KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
-
+        run: echo "${{ secrets.KEY }}" > ssh_key.pem && chmod 600 ssh_key.pem
+      # Paso 2: listar
+      - name: Configurar clave SSH
+        run: ls
+        
       - uses: actions/checkout@v2 
       - name: Build & Deploy
       
         run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@ec2-44-203-100-59.compute-1.amazonaws.com
+          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@ec2-44-203-100-59.compute-1.amazonaws.com
 
               # Now we have got the access of EC2 and we will start the deploy .
               cd /home/ubuntu/littleangryunicorn &&
