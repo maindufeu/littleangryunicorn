@@ -15,7 +15,7 @@ jobs:
         run: echo "${{ secrets.KEY }}" > ssh_key.pem && chmod 400 ssh_key.pem
       # Paso 2: listar
       - name: Configurar clave SSH
-        run: ls && export PATH=$PATH:$(pwd)+ssh_key.pem && $PATH
+        run: ls && export PATH=$PATH:$(pwd)/ssh_key.pem && $PATH
         
       - uses: actions/checkout@v2 
       - name: Build & Deploy
