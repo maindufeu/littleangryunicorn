@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      # Paso 1: Configuración de SSH
+      - name: Configurar clave SSH
+        run: echo "${{ secrets.KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
 
       - uses: actions/checkout@v2 
       - name: Build & Deploy
       
         run: |
-          echo "${{ secrets.KEY }}" > private_key.pem
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@ec2-44-203-100-59.compute-1.amazonaws.com
 
               # Now we have got the access of EC2 and we will start the deploy .
