@@ -21,8 +21,7 @@ jobs:
       - name: Build & Deploy
       
         run: |
-          ssh -o StrictHostKeyChecking=no -i ssh_key.pem ubuntu@ec2-44-203-100-59.compute-1.amazonaws.com
+          ssh -i ssh_key.pem ubuntu@ec2-44-203-100-59.compute-1.amazonaws.com
 
               # Now we have got the access of EC2 and we will start the deploy .
-              cd /home/ubuntu/littleangryunicorn &&
-              git pull
+              cd /home/ubuntu/littleangryunicorn && git pull
