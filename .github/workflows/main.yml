@@ -12,14 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2 
       - name: Build & Deploy
-        env:
-            PRIVATE_KEY: ${{ secrets.KEY }}
-            HOSTNAME: ec2-44-203-100-59.compute-1.amazonaws.com
-            USER_NAME: ubuntu
       
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          echo "${{ secrets.KEY }}" > private_key && chmod 600 private_key.pem
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@ec2-44-203-100-59.compute-1.amazonaws.com'
 
               # Now we have got the access of EC2 and we will start the deploy .
               cd /home/ubuntu/littleangryunicorn &&
